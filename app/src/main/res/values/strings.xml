@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">asc-supplies-01</string>
+    <string name="button_addSupplier">Add Supplier</string>
+    <string name="hint_supplierTitle">Supplier Title</string>
 </resources>
