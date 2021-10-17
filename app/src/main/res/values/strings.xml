@@ -2,4 +2,11 @@
     <string name="app_name">asc-supplies-01</string>
     <string name="button_addSupplier">Add Supplier</string>
     <string name="hint_supplierTitle">Supplier Title</string>
+    <string name="hint_supplierStreetAddress">Street </string>
+    <string name="hint_supplierCityAddress">City </string>
+    <string name="hint_supplierStateAddress">State </string>
+    <string name="hint_supplierZipAddress">ZIP </string>
+    <string name="hint_supplierTelephone">Telephone </string>
+    <string name="hint_supplierEmail">Email  </string>
+    <string name="hint_supplierWebsite">Website </string>
 </resources>
