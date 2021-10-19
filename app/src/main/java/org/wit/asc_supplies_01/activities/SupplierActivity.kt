@@ -4,26 +4,27 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import org.wit.asc_supplies_01.databinding.ActivitySupplierBinding
+import org.wit.asc_supplies_01.main.MainApp
 import org.wit.asc_supplies_01.models.SupplierModel
-import timber.log.Timber
+//import timber.log.Timber
 import timber.log.Timber.i
 
 class SupplierActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySupplierBinding
     var supplier = SupplierModel()
-    val suppliers = ArrayList<SupplierModel>()
+    lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySupplierBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        Timber.plant(Timber.DebugTree())
-        i("Supplier Activity started..")
 
+        app = application as MainApp
+        i("PSupplier Activity started...")
         binding.btnAdd.setOnClickListener() {
             supplier.title = binding.SupplierTitle.text.toString()
-            //val supplierTitle = binding.supplierTitle.text.toString()
+            supplier.description = binding.description.text.toString()
             supplier.street = binding.streetAddress.text.toString()
             supplier.city = binding.cityAddress.text.toString()
             supplier.state = binding.stateAddress.text.toString()
@@ -34,10 +35,13 @@ class SupplierActivity : AppCompatActivity() {
 
             if (supplier.title.isNotEmpty()) {
                 //suppliers.add(supplier)
-                suppliers.add(supplier.copy())
+                app.suppliers.add(supplier.copy())
                 i("add Button Pressed: ${supplier}")
-                for (i in suppliers.indices)
-                { i("Suppliers[$i]:${this.suppliers[i]}") }
+                for (i in app.suppliers.indices)
+                { i("Supplier[$i]:${this.app.suppliers[i]}")
+                }
+                setResult(RESULT_OK)
+                finish()
             }
             else {
                 Snackbar
