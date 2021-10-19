@@ -11,4 +11,5 @@
     <string name="hint_supplierEmail">Email  </string>
     <string name="hint_supplierWebsite">Website </string>
     <string name="menu_addSupplier">Add</string>
+    <string name="menu_cancelSupplier">Cancel</string>
 </resources>

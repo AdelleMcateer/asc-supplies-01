@@ -2,11 +2,14 @@ package org.wit.asc_supplies_01.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import com.google.android.material.snackbar.Snackbar
+import org.wit.asc_supplies_01.R
 import org.wit.asc_supplies_01.databinding.ActivitySupplierBinding
 import org.wit.asc_supplies_01.main.MainApp
 import org.wit.asc_supplies_01.models.SupplierModel
-//import timber.log.Timber
+import timber.log.Timber
 import timber.log.Timber.i
 
 class SupplierActivity : AppCompatActivity() {
@@ -17,11 +20,16 @@ class SupplierActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivitySupplierBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.toolbarAdd.title = title
+        //setSupportActionBar(binding.toolbarAdd)
 
         app = application as MainApp
-        i("PSupplier Activity started...")
+
+        i("Supplier Activity started...")
+
         binding.btnAdd.setOnClickListener() {
             supplier.title = binding.SupplierTitle.text.toString()
             supplier.description = binding.description.text.toString()
@@ -34,7 +42,6 @@ class SupplierActivity : AppCompatActivity() {
             supplier.website = binding.website.text.toString()
 
             if (supplier.title.isNotEmpty()) {
-                //suppliers.add(supplier)
                 app.suppliers.add(supplier.copy())
                 i("add Button Pressed: ${supplier}")
                 for (i in app.suppliers.indices)
@@ -49,6 +56,19 @@ class SupplierActivity : AppCompatActivity() {
                     .show()
             }
         }
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_supplier, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.item_cancel -> {
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
