@@ -9,6 +9,7 @@ import org.wit.asc_supplies_01.R
 import org.wit.asc_supplies_01.databinding.ActivitySupplierBinding
 import org.wit.asc_supplies_01.main.MainApp
 import org.wit.asc_supplies_01.models.SupplierModel
+import org.wit.asc_supplies_01.models.SupplierMemStore
 import timber.log.Timber
 import timber.log.Timber.i
 
@@ -16,6 +17,7 @@ class SupplierActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySupplierBinding
     var supplier = SupplierModel()
+    //val placemarks = ArrayList<PlacemarkModel>()
     lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,11 +26,11 @@ class SupplierActivity : AppCompatActivity() {
         binding = ActivitySupplierBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbarAdd.title = title
-        //setSupportActionBar(binding.toolbarAdd)
+        setSupportActionBar(binding.toolbarAdd)
 
         app = application as MainApp
 
-        i("Supplier Activity started...")
+            i("Supplier Activity started...")
 
         binding.btnAdd.setOnClickListener() {
             supplier.title = binding.SupplierTitle.text.toString()
@@ -41,15 +43,13 @@ class SupplierActivity : AppCompatActivity() {
             supplier.email = binding.email.text.toString()
             supplier.website = binding.website.text.toString()
 
-            if (supplier.title.isNotEmpty()) {
-                app.suppliers.add(supplier.copy())
-                i("add Button Pressed: ${supplier}")
-                for (i in app.suppliers.indices)
-                { i("Supplier[$i]:${this.app.suppliers[i]}")
+           if (supplier.title.isNotEmpty()) {
+                   // app.suppliers.add(supplier.copy())
+               app.suppliers.create(supplier.copy())
+                    i("add Button Pressed: ${supplier}")
+                    setResult(RESULT_OK)
+                    finish()
                 }
-                setResult(RESULT_OK)
-                finish()
-            }
             else {
                 Snackbar
                     .make(it,"Please Enter a title", Snackbar.LENGTH_LONG)
