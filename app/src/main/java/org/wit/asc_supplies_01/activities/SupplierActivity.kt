@@ -17,20 +17,29 @@ class SupplierActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySupplierBinding
     var supplier = SupplierModel()
-    //val placemarks = ArrayList<PlacemarkModel>()
     lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivitySupplierBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
-
         app = application as MainApp
 
-            i("Supplier Activity started...")
+        //i("Supplier Activity started...")
+
+        if (intent.hasExtra("supplier_edit")) {
+            supplier = intent.extras?.getParcelable("supplier_edit")!!
+            binding.SupplierTitle.setText(supplier.title)
+            binding.streetAddress.setText(supplier.street)
+            binding.cityAddress.setText(supplier.city)
+            binding.stateAddress.setText(supplier.state)
+            binding.zipAddress.setText(supplier.zip)
+            binding.telephone.setText(supplier.telephone)
+            binding.email.setText(supplier.email)
+            binding.website.setText(supplier.website)
+        }
 
         binding.btnAdd.setOnClickListener() {
             supplier.title = binding.SupplierTitle.text.toString()
@@ -44,7 +53,6 @@ class SupplierActivity : AppCompatActivity() {
             supplier.website = binding.website.text.toString()
 
            if (supplier.title.isNotEmpty()) {
-                   // app.suppliers.add(supplier.copy())
                app.suppliers.create(supplier.copy())
                     i("add Button Pressed: ${supplier}")
                     setResult(RESULT_OK)

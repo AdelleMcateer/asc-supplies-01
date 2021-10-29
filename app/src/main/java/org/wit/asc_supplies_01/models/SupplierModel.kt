@@ -1,6 +1,11 @@
 package org.wit.asc_supplies_01.models
 
-data class SupplierModel(var title: String = "",
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class SupplierModel(var id: Long = 0,
+                         var title: String = "",
                          var description: String = "",
                          var street: String = "",
                          var city: String = "",
@@ -9,4 +14,4 @@ data class SupplierModel(var title: String = "",
                          var telephone: String = "", //TODO: change to int
                          var email: String = "", //TODO: change to email format only
                          var website: String = "",
-                         )
+                         ) : Parcelable
