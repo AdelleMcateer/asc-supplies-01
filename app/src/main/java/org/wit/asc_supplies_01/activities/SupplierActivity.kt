@@ -21,6 +21,7 @@ class SupplierActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        var edit = false
         binding = ActivitySupplierBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbarAdd.title = title
@@ -30,8 +31,10 @@ class SupplierActivity : AppCompatActivity() {
         //i("Supplier Activity started...")
 
         if (intent.hasExtra("supplier_edit")) {
+            edit = true
             supplier = intent.extras?.getParcelable("supplier_edit")!!
             binding.SupplierTitle.setText(supplier.title)
+            binding.description.setText(supplier.description)
             binding.streetAddress.setText(supplier.street)
             binding.cityAddress.setText(supplier.city)
             binding.stateAddress.setText(supplier.state)
@@ -39,6 +42,7 @@ class SupplierActivity : AppCompatActivity() {
             binding.telephone.setText(supplier.telephone)
             binding.email.setText(supplier.email)
             binding.website.setText(supplier.website)
+            binding.btnAdd.setText(R.string.save_supplier)
         }
 
         binding.btnAdd.setOnClickListener() {
@@ -52,17 +56,18 @@ class SupplierActivity : AppCompatActivity() {
             supplier.email = binding.email.text.toString()
             supplier.website = binding.website.text.toString()
 
-           if (supplier.title.isNotEmpty()) {
-               app.suppliers.create(supplier.copy())
-                    i("add Button Pressed: ${supplier}")
-                    setResult(RESULT_OK)
-                    finish()
-                }
-            else {
-                Snackbar
-                    .make(it,"Please Enter a title", Snackbar.LENGTH_LONG)
+            if (supplier.title.isEmpty()) {
+                Snackbar.make(it,R.string.enter_supplier_title, Snackbar.LENGTH_LONG)
                     .show()
+            } else {
+                if (edit) {
+                    app.suppliers.update(supplier.copy())
+                } else {
+                    app.suppliers.create(supplier.copy())
+                }
             }
+            setResult(RESULT_OK)
+            finish()
         }
     }
 
