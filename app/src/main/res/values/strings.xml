@@ -14,4 +14,7 @@
     <string name="menu_cancelSupplier">Cancel</string>
     <string name="enter_supplier_title"> Please enter a Supplier Name </string>
     <string name="save_supplier"> Save Supplier </string>
+    <string name="button_addImage"> Add Image </string>
+    <string name="select_supplier_image">Select supplier image</string>
+    <string name="change_supplier_image">Change supplier image</string>
 </resources>
