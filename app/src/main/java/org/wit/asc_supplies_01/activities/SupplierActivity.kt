@@ -56,7 +56,9 @@ class SupplierActivity : AppCompatActivity() {
             binding.email.setText(supplier.email)
             binding.website.setText(supplier.website)
             binding.btnAdd.setText(R.string.save_supplier)
-            Picasso.get().load(supplier.image).into(binding.supplierImage)
+            Picasso.get()
+                .load(supplier.image)
+                .into(binding.supplierImage)
 
             if (supplier.image != Uri.EMPTY) {
                 binding.chooseImage.setText(R.string.change_supplier_image)
@@ -121,6 +123,7 @@ class SupplierActivity : AppCompatActivity() {
                             Picasso.get()
                                 .load(supplier.image)
                                 .into(binding.supplierImage)
+                            binding.chooseImage.setText(R.string.change_supplier_image)
                         } // end of if
                     }
                     RESULT_CANCELED -> { } else -> { }
