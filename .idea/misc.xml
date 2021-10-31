@@ -4,8 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/dev/mobileAppDev/AndroidStudioProjects/ascsupplies01/app/src/main/res/layout/activity_supplier.xml" value="0.1" />
+        <entry key="..\:/dev/mobileAppDev/AndroidStudioProjects/ascsupplies01/app/src/main/res/layout/activity_supplier_list.xml" value="0.16354166666666667" />
+        <entry key="..\:/dev/mobileAppDev/AndroidStudioProjects/ascsupplies01/app/src/main/res/layout/card_placemark.xml" value="0.16354166666666667" />
+        <entry key="..\:/dev/mobileAppDev/AndroidStudioProjects/ascsupplies01/app/src/main/res/layout/card_supplier.xml" value="0.15260416666666668" />
+        <entry key="..\:/dev/mobileAppDev/AndroidStudioProjects/ascsupplies01/app/src/main/res/menu/menu_main.xml" value="0.16354166666666667" />
+        <entry key="..\:/dev/mobileAppDev/AndroidStudioProjects/ascsupplies01/app/src/main/res/menu/menu_supplier.xml" value="0.14895833333333333" />
       </map>
     </option>
+  </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/app/src/main/java/org/wit/asc_supplies_01/models/SupplierMemStore" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

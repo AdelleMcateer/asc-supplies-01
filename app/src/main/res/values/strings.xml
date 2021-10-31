@@ -1,5 +1,24 @@
 <resources>
     <string name="app_name">asc-supplies-01</string>
     <string name="button_addSupplier">Add Supplier</string>
-    <string name="hint_supplierTitle">Supplier Title</string>
+    <string name="hint_supplierTitle">Supplier Name</string>
+    <string name="hint_supplierDescription">Supplier Description</string>
+    <string name="hint_supplierStreetAddress">Street </string>
+    <string name="hint_supplierCityAddress">City </string>
+    <string name="hint_supplierStateAddress">State </string>
+    <string name="hint_supplierZipAddress">ZIP </string>
+    <string name="hint_supplierTelephone">Telephone </string>
+    <string name="hint_supplierEmail">Email  </string>
+    <string name="hint_supplierWebsite">Website </string>
+
+    <string name="menu_addSupplier">Add</string>
+    <string name="menu_cancelSupplier">Cancel</string>
+    <string name="enter_supplier_title"> Please enter a Supplier Name </string>
+    <string name="save_supplier"> Save Supplier </string>
+    <string name="button_addImage"> Add Image </string>
+    <string name="select_supplier_image">Select supplier image</string>
+    <string name="change_supplier_image">Change supplier image</string>
+
+    <string name="button_location">Set Location</string>
+    <string name="title_activity_map">MapActivity</string>
 </resources>
