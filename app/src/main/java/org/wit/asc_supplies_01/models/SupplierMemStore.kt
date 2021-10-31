@@ -43,6 +43,10 @@ class SupplierMemStore : SupplierStore {
         }
     }
 
+    override fun delete(supplier: SupplierModel) {
+        suppliers.remove(supplier)
+    }
+
     private fun logAll() {
         suppliers.forEach { i("$it") }
     }

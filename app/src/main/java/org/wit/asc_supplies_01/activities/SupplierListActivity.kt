@@ -32,7 +32,8 @@ class SupplierListActivity : AppCompatActivity(), SupplierListener {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = SupplierAdapter(app.suppliers.findAll(),this)
+        //binding.recyclerView.adapter = SupplierAdapter(app.suppliers.findAll(),this)
+        loadSuppliers()
 
         registerRefreshCallback()
     }
@@ -46,7 +47,8 @@ class SupplierListActivity : AppCompatActivity(), SupplierListener {
         when (item.itemId) {
             R.id.item_add -> {
                 val launcherIntent = Intent(this, SupplierActivity::class.java)
-                startActivityForResult(launcherIntent,0)
+                refreshIntentLauncher.launch(launcherIntent)
+                //startActivityForResult(launcherIntent,0)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -55,14 +57,26 @@ class SupplierListActivity : AppCompatActivity(), SupplierListener {
     override fun onSupplierClick(supplier: SupplierModel) {
         val launcherIntent = Intent(this, SupplierActivity::class.java)
         launcherIntent.putExtra("supplier_edit", supplier)
-        startActivityForResult(launcherIntent,0)
+        refreshIntentLauncher.launch(launcherIntent)
+        //startActivityForResult(launcherIntent,0)
     }
 
     private fun registerRefreshCallback() {
         refreshIntentLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-            { binding.recyclerView.adapter?.notifyDataSetChanged() }
+            { loadSuppliers() }
     }
+
+    private fun loadSuppliers() {
+        showSuppliers(app.suppliers.findAll())
+    }
+
+    fun showSuppliers (suppliers: List<SupplierModel>) {
+        binding.recyclerView.adapter = SupplierAdapter(suppliers, this)
+        binding.recyclerView.adapter?.notifyDataSetChanged()
+    }
+
+
     /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         binding.recyclerView.adapter?.notifyDataSetChanged()
         super.onActivityResult(requestCode, resultCode, data)
