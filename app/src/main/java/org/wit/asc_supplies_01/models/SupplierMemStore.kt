@@ -23,7 +23,8 @@ class SupplierMemStore : SupplierStore {
     }
 
     override fun update(supplier: SupplierModel) {
-        var foundSupplier: SupplierModel? = suppliers.find { p -> p.id == supplier.id }
+        //var foundSupplier: SupplierModel? = suppliers.find { p -> p.id == supplier.id }
+        val foundSupplier: SupplierModel? = suppliers.find { p -> p.id == supplier.id }
         if (foundSupplier != null) {
             foundSupplier.title = supplier.title
             foundSupplier.description = supplier.description
@@ -35,6 +36,9 @@ class SupplierMemStore : SupplierStore {
             foundSupplier.email = supplier.email
             foundSupplier.website = supplier.website
             foundSupplier.image = supplier.image
+            foundSupplier.lat = supplier.lat
+            foundSupplier.lng = supplier.lng
+            foundSupplier.zoom = supplier.zoom
             logAll()
         }
     }
