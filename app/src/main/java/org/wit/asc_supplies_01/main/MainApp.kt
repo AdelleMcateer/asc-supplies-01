@@ -8,7 +8,6 @@ import org.wit.asc_supplies_01.models.SupplierJSONStore
 import timber.log.Timber
 import timber.log.Timber.i
 
-
 class MainApp : Application() {
 
     //val suppliers = ArrayList<SupplierModel>()
@@ -28,4 +27,6 @@ class MainApp : Application() {
         suppliers.add(SupplierModel("Three", "About three...", " ","",
             "", "", "", "","" ))*/
     }
+
+
 }
